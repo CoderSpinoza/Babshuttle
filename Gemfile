@@ -10,6 +10,10 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :staging, :production do
+  gem 'pg'
+end
+
 gem 'thin'
 gem 'haml-rails'
 
