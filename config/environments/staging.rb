@@ -90,6 +90,6 @@ Babshuttle::Application.configure do
     :domain => 'babshuttle@gmail.com',
     :authentication => :plain,
     :user_name => 'babshuttle',
-    :password => ENV['GMAIL_PASSWORD']
+    :password => 'Likegene2013'
   }
 end
