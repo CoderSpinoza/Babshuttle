@@ -1,7 +1,7 @@
 #main
   = render partial: "navbar"
   #banner
-    = image_tag "/assets/banner_final2.png"
+    = image_tag asset_path("/assets/banner_final2.png")
 
   .center
     #signup_explanation
@@ -22,8 +22,4 @@
           .modal-content
             = render partial: "users/login"
 
-    = render partial: "footer"
-
-  
-
-    
+    = render partial: "footer"    
