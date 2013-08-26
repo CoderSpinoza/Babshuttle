@@ -120,7 +120,9 @@ a.active {
 }
 
 #footer_div {
-	width: 100%;
+	width: auto;
+	position: relative;
+	bottom: 0;
 	background-color: #2ac583;
 }
 .footer {
