@@ -1,6 +1,14 @@
 Babshuttle::Application.routes.draw do
 
 
+  devise_for :users, :controllers => {registrations: "registrations", sessions: "sessions" }
+  resources :items
+  resources :orders
+
+  get '/congrat' => "home#congrat", as: "congrat"
+  get '/about' => "home#about", as: "about"
+  get '/team' => "home#team", as: "team"
+  get '/contact' => "home#contact", as: "contact"
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

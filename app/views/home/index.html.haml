@@ -1,1 +1,29 @@
-Hihi
+#main
+  = render partial: "navbar"
+  #banner
+    = image_tag "/assets/banner_final2.png"
+
+  .center
+    #signup_explanation
+      %p
+        Sign up before September 1st, 2013 for promotion prices.
+      #countdown_div
+        #countdown
+        #note
+      %button{href: "#signup_modal", class: "btn btn-primary", data: {toggle: "modal"}}
+        Sign Up
+      .modal.fade#signup_modal{tabindex: "-1"}
+        .modal-dialog
+          .modal-content
+            = render partial: "users/form"
+
+      .modal.fade#login_modal{tabindex: "-1"}
+        .modal-dialog
+          .modal-content
+            = render partial: "users/login"
+
+    = render partial: "footer"
+
+  
+
+    

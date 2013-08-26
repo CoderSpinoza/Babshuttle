@@ -1,0 +1,22 @@
+= form_for(@user, :url => user_registration_path) do |f|
+  .modal-header{style: "color: #2ac583;"}
+    %a{class: "close", data: { dismiss: "modal"}}
+      &times;
+    %h3
+      Signup
+  .modal-body
+    .form-group
+      = f.email_field :email, class: "form-control", placeholder: "Email"
+    .form-group
+      = f.text_field :name, class: "form-control", placeholder: "Name"
+    .form-group
+      = f.text_field :address, class: "form-control", placeholder: "Address"
+    .form-group
+      = f.password_field :password, class: "form-control", placeholder: "Password"
+    .form-group
+      = f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmation"
+
+  .modal-footer
+    %button{ type: "submit", class: "btn btn-primary"} 
+      Sign up
+

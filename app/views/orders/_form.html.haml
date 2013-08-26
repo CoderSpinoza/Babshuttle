@@ -1,0 +1,16 @@
+.order_form
+	%h2 Order Korean groceries!
+	= form_for(@order, url: "/orders") do |f|
+		.form-group
+			= f.label :items
+			= f.text_area :items, class: "form-control", placeholder: "예) 신라면 한 박스, 쌀 한 포대 20불 미만", rows: 15, id: "items"
+
+		.form-group
+			= f.label :time
+			%select{name: "order[time]"}
+				%option{value: "today"} Today
+				%option{value: "tomorrow"} Tomorrow
+
+		.form-group
+			%button{ type: "submit", class: "btn btn-primary"}
+				Order

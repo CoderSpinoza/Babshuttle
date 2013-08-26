@@ -1,0 +1,15 @@
+#white_main
+	= render partial: "navbar"
+
+
+	.center{style: "text-align:center;"}
+		= image_tag "/assets/banner_alternative.png"
+		%h2{style: "color: #2ac583;"} Congratulations! You have successfully signed up for Bab Shuttle!
+
+		%h4{style: "width:800px; margin: 0 auto;color:#888888;"}
+			Our service is lanuching on September 1st, 2013. In the meanwhile, please refer to our about page or contact us at 
+			= link_to "babshuttle@gmail.com"
+			if you have any questions.
+		#countdown_div{style: "margin-top:100px;"}
+			#countdown
+			#note.green

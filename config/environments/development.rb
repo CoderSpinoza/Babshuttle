@@ -26,4 +26,21 @@ Babshuttle::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.action_mailer.default_url_options = { :host => '127.0.0.1', port: '5000', protocol: 'http' }
+
+  # Gmail SMTP
+  config.action_mailer.delivery_method = :smtp
+   # Gmail SMTP server setup
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :enable_starttls_auto => true,
+    :port => 587,
+    :domain => 'babshuttle@gmail.com',
+    :authentication => :plain,
+    :user_name => 'babshuttle',
+    :password => ENV['GMAIL_PASSWORD']
+  }
+
+
 end

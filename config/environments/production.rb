@@ -77,4 +77,19 @@ Babshuttle::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_mailer.default_url_options = { :host => 'babshuttle.herokuapp.com' }
+
+  # Gmail SMTP
+  config.action_mailer.delivery_method = :smtp
+   # Gmail SMTP server setup
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :enable_starttls_auto => true,
+    :port => 587,
+    :domain => 'babshuttle@gmail.com',
+    :authentication => :plain,
+    :user_name => 'babshuttle',
+    :password => ENV['GMAIL_PASSWORD']
+  }
 end

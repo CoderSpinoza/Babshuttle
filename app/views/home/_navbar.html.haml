@@ -1,0 +1,17 @@
+#header
+  #center_header
+    #navbar
+      = link_to "Home", root_path, class: is_active(root_path)
+      = link_to "About", about_path, class: is_active(about_path)
+      = link_to "Team", team_path, class: is_active(team_path)
+      = link_to "Contact", contact_path, class: is_active(contact_path)
+      / - if @current_user
+      /   = link_to "Order", new_order_path
+    #login_bar
+      - if @current_user.nil?
+        %button{class: "btn btn-primary", href: "#login_modal", data: { toggle: "modal"}}
+          Login
+      - else
+        / %a{class: "btn btn-primary", href: destroy_user_session_path, method: :delete}
+        /   Logout
+        = link_to "Logout", destroy_user_session_path, class: "btn btn-primary", method: :delete

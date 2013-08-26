@@ -14,12 +14,15 @@ group :staging, :production do
   gem 'pg'
 end
 
+
 gem 'thin'
 gem 'haml-rails'
-
-
+gem 'rails_12factor'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'
 gem 'devise'
 gem 'gmaps4rails'
+gem 'activemerchant'
+gem 'paperclip'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
