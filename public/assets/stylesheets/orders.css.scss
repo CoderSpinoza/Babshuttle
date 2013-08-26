@@ -1,0 +1,22 @@
+// Place all the styles related to the Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#white_main {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.order_form {
+	color: #2ac583;
+	width: 600px;
+	float: left;
+}
+
+#recommendations {
+	float: right;
+	width: 400px;
+	color: #2ac583;
+	ul {
+		list-style-type: none;
+	}
+}
