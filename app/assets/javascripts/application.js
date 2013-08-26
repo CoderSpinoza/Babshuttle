@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_directory .
 //= require countdown/jquery.countdown
 //= require countdown/home_countdown
