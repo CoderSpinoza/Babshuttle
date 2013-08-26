@@ -1,14 +1,17 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+html {
+	height: 100%;
+}
 body {
 	margin: 0px;
-	
+	height: 100%;
 	background-size: cover;
 }
 
 #main {
+	height: 100%;
 	width: 100%;
 	background-color: #2ac583;
 	margin: 0 auto;
