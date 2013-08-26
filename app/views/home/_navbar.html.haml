@@ -14,4 +14,7 @@
       - else
         / %a{class: "btn btn-primary", href: destroy_user_session_path, method: :delete}
         /   Logout
-        = link_to "Logout", destroy_user_session_path, class: "btn btn-primary", method: :delete
+        
+        = link_to "Logout", destroy_user_session_path, class: "btn btn-primary", method: :delete, style: "float:right;"
+        %p{style: "color:white;", style: "float:right;margin-top:5px;color:white;"}
+          = @current_user.name
