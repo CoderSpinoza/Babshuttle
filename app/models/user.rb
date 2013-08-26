@@ -4,10 +4,13 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
+  validates :name, presence: true
+  validates :address, presence: true
+
   after_create :send_welcome_email
   private
 	  def app_params
-	    params.require(:user).permit(:name, :address, :updated_at, :created_at)
+	    params.require(:user).permit(:name, :address, :email, :updated_at, :created_at)
 	  end
 
 	  def send_welcome_email

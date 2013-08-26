@@ -3,3 +3,8 @@
 	.center
 		= image_tag "team.png"
 		= render partial: "footer"
+
+		.modal.fade#login_modal{tabindex: "-1"}
+			.modal-dialog
+				.modal-content
+					= render partial: "users/login"

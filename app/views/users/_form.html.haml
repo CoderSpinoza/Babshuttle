@@ -1,4 +1,4 @@
-= form_for(@user, :url => user_registration_path) do |f|
+= form_for(@user, :url => user_registration_path, data: { remote: true}) do |f|
   .modal-header{style: "color: #2ac583;"}
     %a{class: "close", data: { dismiss: "modal"}}
       &times;
@@ -15,6 +15,8 @@
       = f.password_field :password, class: "form-control", placeholder: "Password"
     .form-group
       = f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmation"
+    .form-group
+      #signup_alert
 
   .modal-footer
     %button{ type: "submit", class: "btn btn-primary"} 

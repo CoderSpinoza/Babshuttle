@@ -1,3 +1,10 @@
 // Place all the styles related to the Registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#signup_alert {
+	color: red;
+	font-size: 15px;
+	font-weight: normal;
+	height: 10px;
+}
