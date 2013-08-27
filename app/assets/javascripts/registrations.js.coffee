@@ -5,7 +5,7 @@
 $(document).ready ->
 	$("form#new_user")
 		.bind 'ajax:success', (evt, xhr, settings) -> 
-			window.location = "/about"
+			window.location = "/"
 		.bind 'ajax:error', (evt, xhr, settings) ->
 			message = JSON.parse(xhr.responseText).message
 			error_message = message.join ", "

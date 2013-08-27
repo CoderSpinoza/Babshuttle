@@ -5,7 +5,7 @@
 $(document).ready ->
 	$("form#new_session")
 		.bind 'ajax:success', (evt, xhr, settings) -> 
-			window.location = "/about"
+			window.location = "/"
 		.bind 'ajax:error', (evt, xhr, settings) ->
 			message = JSON.parse(xhr.responseText).message
 			$("#login_alert").html message
