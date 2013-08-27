@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   validates :name, presence: true
-  validates :address, presence: true
 
   after_create :send_welcome_email
   private
