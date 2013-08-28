@@ -23,4 +23,8 @@ class HomeController < ApplicationController
 		@user = User.new
 		@current_user = current_user
 	end
+
+	def metrics
+		@users = User.all
+	end
 end

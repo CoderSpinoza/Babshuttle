@@ -1,0 +1,8 @@
+#white_main
+	= render partial: "navbar"
+	.center
+		.h3
+			Users: #{@users.count}
+			%ol
+			- @users.each do |user|
+				%li= user.name

@@ -22,6 +22,7 @@ gem 'devise'
 gem 'gmaps4rails'
 gem 'activemerchant'
 gem 'paperclip'
+gem 'cancan'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
