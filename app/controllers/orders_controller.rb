@@ -8,7 +8,8 @@ class OrdersController < ApplicationController
 		@tomorrow = Time.new + 3600 * 24
 		@dates = [@today, @tomorrow]
 
-		@recommended_items = Item.all
+		@recommended_items = Item.where('popularity > 0')
+		@items = Item.all
 	end
 
 	def create

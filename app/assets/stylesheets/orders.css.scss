@@ -7,17 +7,22 @@
 	height: 100%;
 }
 
-.order_form {
+#order_form {
 	color: #2ac583;
 	width: 600px;
 	float: left;
 }
 
 #recommendations {
-	float: right;
-	width: 400px;
 	color: #2ac583;
-	ul {
-		list-style-type: none;
-	}
+	width: 400px;
+	height: 560px;
+	float: right;
 }
+
+ul#recommendations, ul#suggestions {
+	width: 400px;
+	height: 560px;
+	overflow: auto;
+}
+

@@ -1,5 +1,7 @@
 #recommendations
 	%h2 Recommendations
-	%ul#recommended_list
+	%ul#recommendations
 		- @recommended_items.each do |rec|
 			= render partial: "item", object: rec
+	%ul#suggestions{style: "display:none;"}
+		

@@ -7,6 +7,17 @@ gem 'rails', '4.0.0'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+	
+	gem 'cucumber-rails'
+	gem 'guard-rspec'
+	gem 'capybara'
+	gem 'faker'
+	gem 'rb-fsevent'
+	gem 'selenium-webdriver'
 end
 
 group :staging, :production do
@@ -24,6 +35,7 @@ gem 'activemerchant'
 gem 'paperclip'
 gem 'cancan'
 gem 'statsmix'
+gem 'magic_encoding'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

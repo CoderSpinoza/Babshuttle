@@ -22,6 +22,7 @@ body {
 	background-color: #2ac583;
 	font-size: 18px;
 	padding-top: 5px;
+	min-width: 1024px;
 
 	#center_header {
 		width: 1024px;
@@ -126,4 +127,5 @@ a.active {
 	padding: 20px;
 	width: 1024px;
 	margin: 0 auto;
+	clear: both;
 }
