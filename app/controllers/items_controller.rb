@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
 		@contains = Item.find(:all, :conditions => ['lower(name) LIKE ?', '%' + params[:q] + '%'])
 
 		@filtered_ingredients = (@starts_with + @contains).uniq
-		#.map { |ingredient| {id: ingredient.id, name: ingredient.name}}
 
 		respond_to do |format|
 			format.json { render json: @contains }
