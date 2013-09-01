@@ -13,5 +13,16 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		@order = Order.new(order_params)
+		@order.user = current_user
+
+		if @order
+			redirect_to success_orders_path
+		else
+		end
 	end
+	private
+	  def order_params
+	    params.require(:order).permit(:items, :time, :updated_at, :created_at)
+	  end
 end

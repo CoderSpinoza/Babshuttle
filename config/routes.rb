@@ -3,7 +3,12 @@ Babshuttle::Application.routes.draw do
 
   devise_for :users, :controllers => {registrations: "registrations", sessions: "sessions" }
   resources :items
-  resources :orders
+  resources :orders do
+    collection do
+      get 'address', as: "address"
+      post 'final', as: "final"
+    end
+  end
 
   get '/congrat' => "home#congrat", as: "congrat"
   get '/about' => "home#about", as: "about"

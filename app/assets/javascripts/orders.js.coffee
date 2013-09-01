@@ -35,3 +35,27 @@ $(document).ready ->
 			$("ul#recommendations").show()
 			$("ul#suggestions").hide()
 
+	$("#editable").focus()
+	$("#editable").bind 'keyup', (e) ->
+		code = e.keycode || e.which
+		items = $("#items").val().split(',')
+		q = items[items.length - 1].trim();
+		console.log $("#items").val()
+		if q.length > 0
+			$.ajax({
+				type: "GET",
+				url: "/items.json",
+				data:  "q=" + q,
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success: (m) ->
+					$("ul#suggestions").html('')
+					$(m).each (key, value) ->
+						$("ul#suggestions").append('<li>' + value.name + '</li>')
+				error: (m) ->
+			});
+			$("ul#recommendations").hide()
+			$("ul#suggestions").show()
+		else
+			$("ul#recommendations").show()
+			$("ul#suggestions").hide()
+

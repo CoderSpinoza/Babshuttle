@@ -22,7 +22,7 @@ class RegistrationsController < Devise::RegistrationsController
 
 	protected
 		def after_sign_up_path_for(resource)
-			congrat_path
+			new_order_path
 		end
 
 	private

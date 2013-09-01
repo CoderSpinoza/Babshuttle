@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   validates :name, presence: true
-
+  has_many :addresses
   after_create :send_welcome_email
   private
 	  def app_params

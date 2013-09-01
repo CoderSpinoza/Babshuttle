@@ -12,7 +12,7 @@ $(function(){
 
   var note = $('#note')
 
-  var ts = new Date(2013, 8, 1);
+  var ts = new Date(2013, 8, 2);
 
   $('#countdown').countdown({
       timestamp	: ts,
