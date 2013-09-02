@@ -1,14 +1,2 @@
-.form-group
-	%label
-		Address
-	%input{type: "text", name: "address[street]", value: @address.street, placeholder: "Street Address"}
-	%input{type: "text", name: "address[apt]", value: @address.apt, placeholder: "APT Number (Optional)"}
-	%input{type: "text", name: "address[zipcode]", valeu: @address.zipcode, placeholder: "Zipcode"}
-.form-group
-	= f.label :time
-	%select{name: "order[time]"}
-		%option{value: @today} Today
-		%option{value: @tomorrow} Tomorrow
-.form-group
-	%button{ type: "submit", class: "btn btn-primary"}
-		Order
+= f.field_for :addresses do |af|
+	.form-group

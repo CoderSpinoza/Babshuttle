@@ -1,0 +1,15 @@
+#white_main
+	= render partial: "home/navbar"
+	.center{style: "text-align:center;"}
+		= image_tag "banner_alternative.png"
+		%h2{style: "color: #2ac583;"} Your order has been successfully placed!
+		%h4{style: "width:800px; margin: 0 auto;color:#888888;color: #2ac583;margin-top:50px;"} You have ordered
+		%p #{@order.items}.
+
+
+		%h4{style: "width:800px; margin: 0 auto;color:#888888;color: #2ac583;"} We will deliver to
+		%p= @order.address.full_address
+		%h4{style: "width:800px; margin: 0 auto;color:#888888;color: #2ac583;"} We will call when we get there to this number
+		%p= @order.phone_number
+
+		= render partial: "home/footer"

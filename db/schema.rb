@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831014131) do
+ActiveRecord::Schema.define(version: 20130902042026) do
 
   create_table "addresses", force: true do |t|
     t.integer  "user_id"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20130831014131) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "addresses", ["street", "apt", "zipcode"], name: "index_addresses_on_street_and_apt_and_zipcode"
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -43,8 +45,10 @@ ActiveRecord::Schema.define(version: 20130831014131) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "items",      default: ""
+    t.text     "items",        default: ""
     t.datetime "time"
+    t.integer  "address_id"
+    t.string   "phone_number"
   end
 
   create_table "users", force: true do |t|

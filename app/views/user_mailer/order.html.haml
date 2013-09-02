@@ -1,0 +1,12 @@
+%html
+	%head
+	%body
+		%h1 Order by #{@order.user.name}
+		%h2 Items ordered
+		= @order.items
+
+		%h2 Deliver Address
+		= @order.address.full_address
+
+		%h2 Phone Number
+		= @current_user.phone_number

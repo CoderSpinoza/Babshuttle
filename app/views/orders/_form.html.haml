@@ -3,8 +3,28 @@
 	= form_for(@order, url: "/orders") do |f|
 		.form-group
 			= f.label :items
-			= f.text_area :items, class: "form-control", placeholder: "예) 신라면 한 박스, 쌀 한 포대 20불 미만", rows: 18, id: "items"
+			= f.text_area :items, class: "form-control", placeholder: "예) 신라면 20개, 쌀 한 포대 20불 미만", rows: 18, id: "items"
+		
+		= f.fields_for :user do |uf|
+			.form-group
+				= uf.label :phone_number
+				= uf.text_field :phone_number, class: "form-control", placeholder: "510-542-1892", value: @current_user.phone_number
+
+		= f.fields_for :address do |af|
+			.form-group.form-inline
+				= af.label :street
+				%br
+				- if @last_order
+					= af.text_field :street, class: "form-control", style: "width:200px;", placeholder: "Street", value: @last_order.address.street
+					= af.text_field :apt, class: "form-control", style: "width:100px;", placeholder: "APT #", value: @last_order.address.apt
+					= af.text_field :zipcode, class: "form-control", style: "width:100px;", placeholder: "Zipcode", value: @last_order.address.zipcode
+				- else
+					= af.text_field :street, class: "form-control", style: "width:200px;", placeholder: "Street"
+					= af.text_field :apt, class: "form-control", style: "width:100px;", placeholder: "APT #"
+					= af.text_field :zipcode, class: "form-control", style: "width:100px;", placeholder: "Zipcode"
 		.form-group
-			%button{ type: "submit", class: "btn btn-primary"}
-				Check Out
+			= f.label :time
+			= f.collection_select :time, @dates, :last, :first
+		.form-group		  
+			= f.submit "Order", class: "btn btn-primary", data: { disable_with: "Ordering"}
 		
