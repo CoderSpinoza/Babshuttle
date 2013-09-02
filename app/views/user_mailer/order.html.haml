@@ -8,5 +8,11 @@
 		%h2 Delivery Address
 		= @order.address.full_address
 
+		%h2 Delivery Time
+		- if @order.today?
+			Today
+		- else
+			Tomorrow
+			
 		%h2 Phone Number
 		= @current_user.phone_number
