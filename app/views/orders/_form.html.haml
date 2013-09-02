@@ -3,7 +3,7 @@
 	= form_for(@order, url: "/orders") do |f|
 		.form-group
 			= f.label :items
-			= f.text_area :items, class: "form-control", placeholder: "예) 신라면 20개, 쌀 한 포대 20불 미만", rows: 18, id: "items"
+			= f.text_area :items, class: "form-control", placeholder: "Please be as specific as possible and separate items with commas. 예) 신라면 블랙 20개입, 쌀 한 포대 20불 미만, 썬 김치 큰 통, 흰 양파 6개, 처음처럼 24병, 참이슬 후레쉬 1병, 동원 참치 3개입, 백설 군만두", rows: 18, id: "items"
 		
 		= f.fields_for :user do |uf|
 			.form-group
@@ -25,6 +25,8 @@
 		.form-group
 			= f.label :time
 			= f.collection_select :time, @dates, :last, :first
+			%select
+				%option 6pm ~ 9pm
 		.form-group		  
 			= f.submit "Order", class: "btn btn-primary", data: { disable_with: "Ordering"}
 		

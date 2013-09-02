@@ -9,6 +9,13 @@
 
 		%h4{style: "width:800px; margin: 0 auto;color:#888888;color: #2ac583;"} We will deliver to
 		%p= @order.address.full_address
+
+		%h4{style: "width:800px; margin: 0 auto;color:#888888;color: #2ac583;"} Your delivery will arrive
+		- if @order.today?
+			%p Today between 6pm and 9pm
+		- else
+			%p Tomorrow between 6pm and 9pm
+		%h4{style: "width:800px; margin: 0 auto;color:#888888;color: #2ac583;"} 
 		%h4{style: "width:800px; margin: 0 auto;color:#888888;color: #2ac583;"} We will call when we get there to this number
 		%p= @order.phone_number
 

@@ -7,7 +7,12 @@ class OrdersController < ApplicationController
 		@last_order = current_user.orders.last
 		@today = Time.new
 		@tomorrow = Time.new + 3600 * 24
-		@dates = {"Today" => @today, "Tomorrow" => @tomorrow}
+		if Time.new.hour >= 15
+			@dates = {"Tomorrow" => @tomorrow}
+		else
+			@dates = {"Today" => @today, "Tomorrow" => @tomorrow}
+		end
+		
 
 		@recommended_items = Item.where('popularity > 0')
 		@items = Item.all

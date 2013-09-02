@@ -17,5 +17,8 @@ class Order < ActiveRecord::Base
 		self.user.update_attributes(user_attributes)
 	end
 
+	def today?
+		return self.time.day == Time.now.utc.day
+	end
 	
 end
