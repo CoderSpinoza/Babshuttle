@@ -10,9 +10,9 @@
 
 		%h2 Delivery Time
 		- if @order.today?
-			Today
+			Today 6pm ~ 9pm
 		- else
-			Tomorrow
-			
+			Tomorrow 6pm ~ 9pm
+
 		%h2 Phone Number
 		= @current_user.phone_number
