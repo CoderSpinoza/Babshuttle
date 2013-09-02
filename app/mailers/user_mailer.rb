@@ -9,6 +9,6 @@ class UserMailer < ActionMailer::Base
   def order(order)
   	@order = order
   	@current_user = @order.user
-  	mail(to: "jakejooyoung@gmail.com", cc: "hara0115@gmail.com", subject: "Order by #{@order.user.name} (#{@order.user.email})")
+  	mail(to: @order.user.email, bcc: "hara0115@gmail.com", cc: "jakejooyoung@gmail.com", subject: "Order by #{@order.user.name} (#{@order.user.email})")
   end
 end
