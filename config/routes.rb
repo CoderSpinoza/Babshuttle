@@ -7,6 +7,7 @@ Babshuttle::Application.routes.draw do
     collection do
       get 'address', as: "address"
       post 'final', as: "final"
+      post 'email'
     end
   end
 

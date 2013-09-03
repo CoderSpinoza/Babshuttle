@@ -49,6 +49,16 @@ class OrdersController < ApplicationController
 		end
 	end
 
+	def email
+		@users = User.all
+
+		@users.each do |user|
+			user.send_refresh_email
+		end
+
+		redirect_to :root
+	end
+
 	private
 	  def order_params
 	    params.require(:order).permit(:items, :time, :updated_at, :created_at, address_attributes: [:street, :apt, :zipcode], user_attributes: [:phone_number, :id])

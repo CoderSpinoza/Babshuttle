@@ -3,7 +3,12 @@ class UserMailer < ActionMailer::Base
 
   def welcome(user)
   	@user = user
-  	mail(to: @user.email, subect: "Welcome to Bab Shuttle!")
+  	mail(to: @user.email, subject: "Welcome to Bab Shuttle!")
+  end
+
+  def refresh(user)
+    @user = user
+    mail(to: @user.email, subject: "Bab shuttle is now open!")
   end
 
   def order(order)

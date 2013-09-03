@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     UserMailer.welcome(self).deliver
   end
 
+  def send_refresh_email
+    UserMailer.refresh(self).deliver
+  end
+
   private
 	  def app_params
 	    params.require(:user).permit(:name, :address, :email, :updated_at, :created_at)
