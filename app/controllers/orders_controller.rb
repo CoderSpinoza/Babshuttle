@@ -50,11 +50,12 @@ class OrdersController < ApplicationController
 	end
 
 	def email
-		@users = User.all
+		@user = User.find_by(email: "jakejooyoung@gmail.com")
 
-		@users.each do |user|
-			user.send_refresh_email
-		end
+		# @users.each do |user|
+		# 	user.send_refresh_email
+		# end
+		@user.send_refresh_email
 
 		redirect_to :root
 	end
