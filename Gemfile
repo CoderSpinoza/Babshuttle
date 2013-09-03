@@ -29,6 +29,7 @@ gem 'thin'
 gem 'haml-rails'
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'
+gem 'bootstrap-select-rails'
 gem 'devise'
 gem 'gmaps4rails'
 gem 'activemerchant'

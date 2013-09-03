@@ -58,4 +58,6 @@ $(document).ready ->
 		else
 			$("ul#recommendations").show()
 			$("ul#suggestions").hide()
+	$('.selectpicker').selectpicker();
+
 

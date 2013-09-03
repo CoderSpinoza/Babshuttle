@@ -24,9 +24,10 @@
 					= af.text_field :zipcode, class: "form-control", style: "width:100px;", placeholder: "Zipcode"
 		.form-group
 			= f.label :time
-			= f.collection_select :time, @dates, :last, :first
-			%select
+			= f.collection_select :time, @dates, :last, :first, {}, {class: "selectpicker", data: {width: "150px", style: "btn-info"}}
+			%select{class: "selectpicker", data: { width: "150px", style: "btn-success"}}
 				%option 6pm ~ 9pm
-		.form-group		  
+		.form-group
 			= f.submit "Order", class: "btn btn-primary", data: { disable_with: "Ordering"}
+			We charge 10 dollars for each delivery.
 		
