@@ -26,7 +26,19 @@ $(document).ready ->
 				success: (m) ->
 					$("ul#suggestions").html('')
 					$(m).each (key, value) ->
-						$("ul#suggestions").append('<li>' + value.name + '</li>')
+						$("ul#suggestions").append('<li><a class="items" style="color: #2ac583;">' + value.name + '</a></li>')
+					$(".items").click ->
+						items_array = $("#items").val().split(',');
+						sliced = items_array.splice(0, items_array.length - 1);
+						console.log(sliced.length);
+						sliced.push($(this).html());
+						console.log(sliced.length);
+						$("#items").val(sliced.join(',')).focus();
+						$("#items").focus();
+
+						value = $("#items").val();
+						$("#items").val(' ');
+						$("#items").val(value);
 				error: (m) ->
 			});
 			$("ul#recommendations").hide()
@@ -34,6 +46,8 @@ $(document).ready ->
 		else
 			$("ul#recommendations").show()
 			$("ul#suggestions").hide()
+
+	
 
 	$("#editable").focus()
 	$("#editable").bind 'keyup', (e) ->
@@ -59,5 +73,7 @@ $(document).ready ->
 			$("ul#recommendations").show()
 			$("ul#suggestions").hide()
 	$('.selectpicker').selectpicker();
+
+
 
 

@@ -2,6 +2,7 @@
 	%h2 Recommendations
 	%ul#recommendations
 		- @recommended_items.each do |rec|
-			%li= rec
+			%li
+				= link_to rec, "/", class: "items"
 	%ul#suggestions{style: "display:none;"}
 		
