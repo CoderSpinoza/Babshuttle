@@ -1,7 +1,16 @@
 #white_main
 	= render partial: "home/navbar"
 	.center
+		- if @current_user.admin?
+			%h2.green Order History
+		- else
+			%h2.green #{@current_user.name}'s Order History
 		%table.table
+			%colgroup
+				%col{style: "width:10%;"}
+				%col{style: "width:55%;"}
+				%col{style: "width:10%;"}
+				%col{style: "width:30%;"}
 			%tr
 				%th Order by
 				%th Items

@@ -5,10 +5,10 @@
       = link_to "About", about_path, class: is_active(about_path)
       = link_to "Team", team_path, class: is_active(team_path)
       = link_to "Contact", contact_path, class: is_active(contact_path)
-      - if @current_user.admin?
-        = link_to "Orders", orders_path
+      
       - if @current_user
-        = link_to "New Order", new_order_path
+        = link_to "History", orders_path
+        = link_to "Order", new_order_path
       
     #login_bar
       - if @current_user.nil?

@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
+		@current_user = current_user
 		if current_user.admin?
 			@orders = Order.includes(:user).includes(:address)
 		else
