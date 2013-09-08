@@ -1,5 +1,14 @@
 class OrdersController < ApplicationController
 	before_filter :authenticate_user!
+
+	def index
+		if current_user.admin?
+			@orders = Order.includes(:user).includes(:address)
+		else
+			@orders = Order.where(user: current_user)
+		end
+	end
+
 	def new
 		@order = Order.new
 		@order.user = current_user

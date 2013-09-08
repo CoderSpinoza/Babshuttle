@@ -1,0 +1,19 @@
+#white_main
+	= render partial: "home/navbar"
+	.center
+		%table.table
+			%tr
+				%th Order by
+				%th Items
+				%th Date
+				%th Address
+			- @orders.each do |order|
+				%tr
+					%td= order.user.name
+					%td= order.items
+					%td= order.time.strftime("%m/%d/%Y")
+					- if order.address
+						%td= order.address.full_address
+
+
+		= render partial: "home/footer"
