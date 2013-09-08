@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
 		# @order.user.update_attributes(phone_number: params[:order][:user][:phone_number])
 		@order.phone_number = params[:order][:user_attributes][:phone_number]
-		if @order.save!
+		if @order.save
 			redirect_to order_path(@order)
 		else
 			flash[:notice] = @order.errors.full_messages

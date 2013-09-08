@@ -12,6 +12,20 @@ $(document).ready ->
 	#		$("#items").tokenInput("add", $("ul.token-input-list-facebook").children().last().children().first().val())
 	#		return false
 
+	$(".items").click (e) ->
+		e.preventDefault()
+		items_array = $("#items").val().split(',');
+		sliced = items_array.splice(0, items_array.length - 1);
+		console.log(sliced.length);
+		sliced.push($(this).html());
+		console.log(sliced.length);
+		$("#items").val(sliced.join(',')).focus();
+		$("#items").focus();
+
+		value = $("#items").val();
+		$("#items").val(' ');
+		$("#items").val(value);
+
 	$("form#new_order").bind 'keyup', (e) ->
 		code = e.keycode || e.which
 		items = $("#items").val().split(',')

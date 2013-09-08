@@ -3,6 +3,6 @@
 	%ul#recommendations
 		- @recommended_items.each do |rec|
 			%li
-				= link_to rec, "/", class: "items"
+				= link_to rec.name, "/", class: "items", style: "color: #2ac583;"
 	%ul#suggestions{style: "display:none;"}
 		
