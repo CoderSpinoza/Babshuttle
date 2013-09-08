@@ -8,14 +8,13 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :test do
-	
-	gem 'cucumber-rails'
 	gem 'guard-rspec'
 	gem 'capybara'
-	gem 'faker'
+	
 	gem 'rb-fsevent'
 	gem 'selenium-webdriver'
 end
@@ -37,6 +36,8 @@ gem 'paperclip'
 gem 'cancan'
 gem 'statsmix'
 gem 'magic_encoding'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

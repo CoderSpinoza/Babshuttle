@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   validates :name, presence: true
+  validates :email, length: { minimum: 6 }
   has_many :addresses
   has_many :orders
   after_create :send_welcome_email
