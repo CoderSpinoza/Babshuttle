@@ -5,27 +5,34 @@
 			%h2.green Order History
 		- else
 			%h2.green #{@current_user.name}'s Order History
-		%table.table
+		%table.table.table-hover
+
 			%colgroup
 				%col{style: "width:5%;"}
 				%col{style: "width:10%;"}
 				%col{style: "width:50%;"}
 				%col{style: "width:10%;"}
 				%col{style: "width:30%;"}
-			%tr
-				%th #
-				%th Order by
-				%th Items
-				%th Date
-				%th Address
-			- @orders.each_with_index do |order, index|
+			%thead
 				%tr
-					%td #{index + 1}
-					%td= order.user.name
-					%td= order.items
-					%td= order.time.strftime("%m/%d/%Y")
-					- if order.address
-						%td= order.address.full_address
+					%th.green #
+					%th.green Order by
+					%th.green Items
+					%th.green Date
+					%th.green Address
+			%tbody
+				- @orders.each_with_index do |order, index|
+					%tr
+						%td 
+							= link_to index + 1
+						%td= order.user.name
+						%td
+							= link_to order.items, order_path(order)
+						%td= order.time.strftime("%m/%d/%Y")
+						- if order.address
+							%td= order.address.full_address
+						- else
+							%td
 
 
 		= render partial: "home/footer"

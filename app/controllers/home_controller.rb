@@ -25,6 +25,6 @@ class HomeController < ApplicationController
 	end
 
 	def metrics
-		@users = User.all
+		@users = User.all.order(:created_at)
 	end
 end
