@@ -2,6 +2,10 @@ class HomeController < ApplicationController
 	def index
 		@user = User.new
 		@current_user = current_user
+
+		if @current_user
+			redirect_to new_order_path
+		end
 	end
 
 	def about

@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-
+gem 'helios'
 # Use sqlite3 as the database for Active Record
 
+gem 'excon'  
+gem 'sprockets'
+
 group :development, :test do
-  gem 'sqlite3'
+  gem 'pg'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
@@ -24,7 +27,9 @@ group :staging, :production do
   gem 'rails_12factor'
 end
 
+
 gem 'thin'
+gem 'sequel-rails'
 gem 'haml-rails'
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'
@@ -38,6 +43,7 @@ gem 'statsmix'
 gem 'magic_encoding'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
+gem 'slot_machine'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

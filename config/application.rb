@@ -19,5 +19,12 @@ module Babshuttle
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.middleware.use Helios::Application do
+      service :data, model: Rails.root.to_s + '/BabshuttleDrivers.xcdatamodel'
+      service :push_notification
+      service :in_app_purchase
+      service :passbook
+    end
   end
 end
