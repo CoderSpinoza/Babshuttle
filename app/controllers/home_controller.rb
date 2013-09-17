@@ -29,6 +29,10 @@ class HomeController < ApplicationController
 	end
 
 	def metrics
-		@users = User.all.order(:created_at)
+		if current_user.admin?
+			@users = User.all.order(:created_at)
+		else
+			render "public/401.html"
+		end
 	end
 end

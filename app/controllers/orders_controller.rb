@@ -42,9 +42,33 @@ class OrdersController < ApplicationController
 		end
 	end
 
+	def edit
+		@order = Order.find(params[:id])
+		@today = Time.new
+		@tomorrow = Time.new + 3600 * 24
+		if Time.new.hour >= 15 and @order.time.to_date > Time.new.to_date
+			@dates = {"Tomorrow" => @tomorrow}
+		else
+			@dates = {"Today" => @today, "Tomorrow" => @tomorrow}
+		end
+		@recommended_items = Item.where('popularity > 0')
+		@items = Item.all
+	end
+
+	def update
+		@order = Order.find(params[:id])
+
+		if @order.update_attributes(order_params)
+			redirect_to orders_path
+		else
+			flash[:alert] = @order.errors.full_messages
+			redirect_to :back
+		end
+	end
+
 	def show
 		@order = Order.find(params[:id])
-		if @order.user != current_user
+		if @order.user != current_user or !current_user.admin?
 			render "public/401.html"
 			return
 		end

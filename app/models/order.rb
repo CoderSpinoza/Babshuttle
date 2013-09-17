@@ -19,7 +19,15 @@ class Order < ActiveRecord::Base
 	end
 
 	def today?
-		return self.time.day == Time.now.utc.day
+		self.time.to_date == Time.now.to_date
+	end
+
+	def editable?
+		if Time.now.hour >= 15
+			self.time.to_date >= Time.now.tomorrow.to_date
+		else
+			self.time.to_date == Time.now.to_date
+		end
 	end
 	
 end

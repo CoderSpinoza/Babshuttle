@@ -1,6 +1,6 @@
 #order_form
 	%h2 Order Korean groceries!
-	= form_for(@order, url: "/orders") do |f|
+	= form_for(@order) do |f|
 		.form-group
 			= f.label :items
 			= f.text_area :items, class: "form-control", placeholder: "Please be as specific as possible and separate items with commas. 예) 신라면 블랙 20개입, 쌀 한 포대 20불 미만, 썬 김치 큰 통, 흰 양파 6개, 처음처럼 24병, 참이슬 후레쉬 1병, 동원 참치 3개입, 백설 군만두", rows: 18, id: "items"
@@ -28,6 +28,9 @@
 			%select{class: "selectpicker", data: { width: "150px", style: "btn-success"}}
 				%option 6 ~ 9 pm
 		.form-group
-			= f.submit "Order", class: "btn btn-primary", data: { disable_with: "Ordering"}
-			We charge 10 dollars for each delivery.
+			- if current_page?(edit_order_path(@order))
+				= f.submit "Edit", class: "btn btn-primary", data: { disable_with: "Editing"}
+			- else
+				= f.submit "Order", class: "btn btn-primary", data: { disable_with: "Ordering"}
+			We charge 10 dollars for each delivery. We also accept debit/credit cards.
 		
