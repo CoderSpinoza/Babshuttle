@@ -299,9 +299,6 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     sequel (3.48.0)
-    sequel-rails (0.6.0)
-      railties (>= 3.2.0)
-      sequel (>= 3.28, < 5.0)
     sinatra (1.4.3)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -398,7 +395,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   selenium-webdriver
-  sequel-rails
   slot_machine
   sprockets
   statsmix

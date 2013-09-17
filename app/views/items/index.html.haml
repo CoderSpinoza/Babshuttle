@@ -1,0 +1,38 @@
+#white_main
+	= render partial: "home/navbar"
+	.center
+		%h2.green Items
+		.form-group
+			= link_to "New Item", new_item_path, class: "btn btn-primary"
+
+		- if flash[:notice]
+			.form-group
+				.alert.alert-success
+					= flash[:notice]
+		%table.table.table-hover
+
+			%colgroup
+				%col{style: "width:10%;"}
+				%col{style: "width:50%;"}
+				%col{style: "width:10%;"}
+				%col{style: "width:30%;"}
+			%thead
+				%tr
+					%th.green #
+					%th.green Name
+					%th.green Edit
+					%th.green Delete
+			%tbody
+				- @items.each_with_index do |item, index|
+					%tr
+						%td 
+							= index + 1
+						%td= item.name
+						%td
+							= link_to "Edit", edit_item_path(item)
+						%td= link_to "Delete", item, method: :delete, data: { confirm: "Are you sure?"}
+						
+
+
+		= render partial: "home/footer"
+	

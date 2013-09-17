@@ -1,0 +1,21 @@
+.item_form
+	- if flash[:alert]
+		- 
+		.alert.alert-danger
+			= flash[:alert]
+
+	= form_for(@item, html: { multipart: true}) do |f|
+		.form-group
+			= image_tag @item.picture
+		.form-group
+			= f.text_field :name, class: "form-control", placeholder: "Item Name"
+		.form-group
+			= f.number_field :price, placeholder: "Price", class: "form-control"
+		.form-group
+			= f.number_field :amount, placeholder: "Amount", class: "form-control"
+		.form-group
+			= f.text_field :unit, placeholder: "Unit", class: "form-control"
+		.form-group
+			= f.file_field :picture, class: "form-control"
+		.form-group
+			= f.submit "Create", class: "btn btn-primary", data: { disable_with: "Creating"}

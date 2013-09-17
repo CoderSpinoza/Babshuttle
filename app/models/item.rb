@@ -1,8 +1,5 @@
 class Item < ActiveRecord::Base
 
 	validates :name, presence: true
-	private
-		def app_params
-			params.require(:item).permit(:name)
-		end
+	has_attached_file :picture, styles: { :small => "60x60>", :large => "150x150>" }
 end

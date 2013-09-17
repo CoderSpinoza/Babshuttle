@@ -29,7 +29,6 @@ end
 
 
 gem 'thin'
-gem 'sequel-rails'
 gem 'haml-rails'
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :github => 'anjlab/bootstrap-rails'

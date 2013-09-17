@@ -1,0 +1,37 @@
+#white_main
+	= render partial: "home/navbar"
+	.center
+		- if @current_user.admin?
+			%h2.green Order History
+		- else
+			%h2.green #{@current_user.name}'s Order History
+		%table.table.table-hover
+
+			%colgroup
+				%col{style: "width:5%;"}
+				%col{style: "width:50%;"}
+				%col{style: "width:10%;"}
+				%col{style: "width:30%;"}
+			%thead
+				%tr
+					%th.green #
+					%th.green Item
+					%th.green Edit
+					%th.green Delete
+			%tbody
+				- @items.each_with_index do |item, index|
+					%tr
+						%td 
+							= link_to index + 1
+						%td= item
+						%td
+							= link_to order.items, order_path(order)
+						%td= order.time.strftime("%m/%d/%Y")
+						- if order.address
+							%td= order.address.full_address
+						- else
+							%td
+
+
+		= render partial: "home/footer"
+	

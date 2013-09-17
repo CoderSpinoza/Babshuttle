@@ -2,7 +2,8 @@ class Order < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :address
-
+	belongs_to :delivery_session
+	
 	after_create :send_order_email
 
 	accepts_nested_attributes_for :user

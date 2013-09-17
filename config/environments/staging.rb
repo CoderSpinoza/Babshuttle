@@ -92,4 +92,13 @@ Babshuttle::Application.configure do
     :user_name => 'babshuttle',
     :password => 'Likegene2013'
   }
+
+  Paperclip::Attachment.default_options.merge!({
+    :storage => :s3,
+    :bucket => 'babshuttle-staging',
+    :s3_credentials => {
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    }
+  })
 end

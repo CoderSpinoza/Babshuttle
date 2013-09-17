@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Address" syncable="YES">
+        <attribute name="apt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipcode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Order" inverseName="address" inverseEntity="Order" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="addresses" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Brand" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Item" inverseName="brand" inverseEntity="Item" syncable="YES"/>
@@ -11,35 +20,39 @@
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Brand" inverseName="items" inverseEntity="Brand" syncable="YES"/>
-        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Order" inverseName="items" inverseEntity="Order" syncable="YES"/>
-        <relationship name="store" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="items" inverseEntity="Store" syncable="YES"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Order" inverseName="items" inverseEntity="Order" syncable="YES"/>
+        <relationship name="store" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Store" inverseName="items" inverseEntity="Store" syncable="YES"/>
     </entity>
     <entity name="Order" syncable="YES">
-        <attribute name="end_hour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="items_string" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="start_hour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="orders" inverseEntity="Item" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="orders" inverseEntity="Address" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Item" inverseName="orders" inverseEntity="Item" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="orders" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Store" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Item" inverseName="store" inverseEntity="Item" syncable="YES"/>
     </entity>
     <entity name="User" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="end_hour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="password_confirmation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="phone_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passwordConfirmation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="start_hour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Order" inverseName="user" inverseEntity="Order" syncable="YES"/>
+        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Address" inverseName="user" inverseEntity="Address" syncable="YES"/>
+        <relationship name="orders" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="user" inverseEntity="Order" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Brand" positionX="-36" positionY="-36" width="128" height="73"/>
-        <element name="Item" positionX="-72" positionY="-324" width="128" height="163"/>
-        <element name="Order" positionX="178" positionY="-45" width="128" height="118"/>
-        <element name="Store" positionX="-153" positionY="-135" width="128" height="58"/>
-        <element name="User" positionX="207" positionY="-286" width="128" height="178"/>
+        <element name="User" positionX="153" positionY="224" width="128" height="178"/>
+        <element name="Address" positionX="99" positionY="-36" width="128" height="148"/>
+        <element name="Brand" positionX="115" positionY="369" width="128" height="73"/>
+        <element name="Item" positionX="-117" positionY="314" width="128" height="163"/>
+        <element name="Order" positionX="-297" positionY="26" width="128" height="148"/>
+        <element name="Store" positionX="-110" positionY="-63" width="128" height="73"/>
     </elements>
 </model>

@@ -42,5 +42,9 @@ Babshuttle::Application.configure do
     :password => ENV['GMAIL_PASSWORD']
   }
 
+  Paperclip::Attachment.default_options.merge!({
+    :storage => :filesystem
+  })
+
 
 end
