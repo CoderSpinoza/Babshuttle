@@ -43,6 +43,7 @@ gem 'magic_encoding'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'slot_machine'
+gem 'aws-sdk'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
