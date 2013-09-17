@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # custom fields
       t.string :name
       t.string :address
-
+      t.string :role, default: "user"
       t.timestamps
     end
 
