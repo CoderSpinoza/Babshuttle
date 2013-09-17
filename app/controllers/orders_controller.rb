@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		if @order.user != current_user or !current_user.admin?
+		if @order.user != current_user
 			render "public/401.html"
 			return
 		end
