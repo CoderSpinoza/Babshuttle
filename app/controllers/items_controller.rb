@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 		end
 		# @filtered_ingredients = (@starts_with + @contains).uniq
 
-		@items = Item.all
+		@items = Item.order(:name)
 		respond_to do |format|
 			format.html
 			format.json { render json: @contains }
