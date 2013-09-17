@@ -3,15 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-	#$("#items").tokenInput("/items.json", {"theme": "facebook"})
-
-	#$("#new_order").bind 'keypress', (e) ->
-	#	code = e.keycode || e.which
-	#	if code == 13
-	#		alert($("ul.token-input-list-facebook").children().last().children().first().val())
-	#		$("#items").tokenInput("add", $("ul.token-input-list-facebook").children().last().children().first().val())
-	#		return false
-
 	$(".items").click (e) ->
 		e.preventDefault()
 		items_array = $("#items").val().split(',');
@@ -26,7 +17,7 @@ $(document).ready ->
 		$("#items").val(' ');
 		$("#items").val(value);
 
-	$("form#new_order").bind 'keyup', (e) ->
+	$("form#new_order, form.edit_order").bind 'keyup', (e) ->
 		code = e.keycode || e.which
 		items = $("#items").val().split(',')
 		q = items[items.length - 1].trim();
