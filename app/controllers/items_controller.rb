@@ -59,6 +59,11 @@ class ItemsController < ApplicationController
 	end
 
 	def destroy
+		@item = Item.find(params[:id])
+
+		@item.destroy
+		flash[:alert] = "You have successfully deleted #{@item.name}"
+		redirect_to :back
 	end
 
 	private
