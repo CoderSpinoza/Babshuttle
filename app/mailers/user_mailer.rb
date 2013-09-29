@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome(user)
   	@user = user
-  	mail(to: @user.email, subject: "Welcome to Bab Shuttle!")
+  	mail(to: @user.email, bcc: "hara0115@gmail.com", cc: "jakejooyoung@gmail.com", subject: "Welcome to Bab Shuttle!")
   end
 
   def refresh(user)
