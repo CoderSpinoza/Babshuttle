@@ -37,7 +37,8 @@ class OrdersController < ApplicationController
 		if @order.save
 			redirect_to order_path(@order)
 		else
-			flash[:notice] = @order.errors.full_messages
+			flash[:items] = params[:order][:items]
+			flash[:alert] = @order.errors.full_messages
 			redirect_to :back
 		end
 	end

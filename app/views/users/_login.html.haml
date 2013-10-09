@@ -12,5 +12,6 @@
 		.form-group
 			#login_alert
 	.modal-footer
+		= link_to "Login with facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary"
 		%button{ type: "submit", class: "btn btn-primary", id: "session_submit"}
 			Login

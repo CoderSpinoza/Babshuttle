@@ -1,7 +1,7 @@
 Babshuttle::Application.routes.draw do
 
 
-  devise_for :users, :controllers => {registrations: "registrations", sessions: "sessions" }
+  devise_for :users, :controllers => {registrations: "registrations", sessions: "sessions", omniauth_callbacks: "omniauth" }
   resources :items
   resources :orders do
     collection do

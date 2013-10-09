@@ -13,6 +13,7 @@
           #note
         %button{href: "#signup_modal", class: "btn btn-primary", data: {toggle: "modal"}}
           Sign Up for Free
+        = link_to "Sign up with facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary"
         .modal.fade#signup_modal{tabindex: "-1"}
           .modal-dialog
             .modal-content

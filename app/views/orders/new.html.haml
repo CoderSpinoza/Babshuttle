@@ -1,6 +1,12 @@
 #white_main
 	= render partial: "home/navbar"
 	.center
+		- if flash[:alert]
+			.alert.alert-danger.alert-dismissable{style: "margin-top: 30px;"}
+				%button{type: "button", class: "close", data: { dismiss: "alert"}}
+					&times;
+				= flash[:alert].join(', ')
+
 		= render partial: "form"
 		= render partial: "recommendations"
 		= render partial: "home/footer"

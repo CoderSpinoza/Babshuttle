@@ -10,7 +10,8 @@
 			%colgroup
 				%col{style: "width:5%;"}
 				%col{style: "width:10%;"}
-				%col{style: "width:50%;"}
+				%col{style: "width:40%;"}
+				%col{style: "width:10%;"}
 				%col{style: "width:10%;"}
 				%col{style: "width:30%;"}
 			%thead
@@ -19,19 +20,27 @@
 					%th.green Order by
 					%th.green Items
 					%th.green Date
+					%th.green Phone
 					%th.green Address
 			%tbody
 				- @orders.each_with_index do |order, index|
 					%tr
 						%td 
 							= link_to index + 1
-						%td= order.user.name
+						- if order.user
+							%td= order.user.name
+						- else
+							%td Deleted user
 						%td
 							- if order.editable?
 								= link_to order.items, edit_order_path(order)
 							- else
 								= link_to order.items, order
 						%td= order.time.strftime("%m/%d/%Y")
+						- if order.user
+							%td= order.user.phone_number
+						- else
+							%td Deleted user
 						- if order.address
 							%td= order.address.full_address
 						- else

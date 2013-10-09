@@ -1,8 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
-
+  skip_after_filter :clear_provider_and_uid, only: [:new]
 	def create
     build_resource
     resource = User.new(user_params)
+    resource.provider = session[:provider]
+    resource.uid = session[:uid]
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
@@ -20,6 +22,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def new
+    @user ||= User.new
+  end
+
 	protected
 		def after_sign_up_path_for(resource)
 			new_order_path
@@ -27,6 +33,6 @@ class RegistrationsController < Devise::RegistrationsController
 
 	private
 		def user_params
-	    params.require(:user).permit(:name, :address, :email, :password, :password_confirmation, :updated_at, :created_at)
+	    params.require(:user).permit(:name, :address, :email, :password, :password_confirmation, :updated_at, :created_at, :provider, :uid)
 	  end
 end

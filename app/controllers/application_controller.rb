@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :devise_user
-
+  after_filter :clear_provider_and_uid
   rescue_from NotYourOrder, with: :render_401
 
   def devise_user
@@ -17,5 +17,10 @@ class ApplicationController < ActionController::Base
 
   def render_401
   	redirect_to "401.html"
+  end
+
+  def clear_provider_and_uid
+    session[:provider] = nil
+    session[:uid] = nil
   end
 end

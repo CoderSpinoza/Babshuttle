@@ -9,6 +9,10 @@ class Order < ActiveRecord::Base
 	accepts_nested_attributes_for :user
 	accepts_nested_attributes_for :address
 
+	validates :items, presence: true
+	validates :phone_number, presence: true, length: { minimum: 10 }
+	# validates :address_id, presence: true
+
 	def send_order_email
 		UserMailer.order(self).deliver
 	end
