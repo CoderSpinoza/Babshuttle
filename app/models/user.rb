@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
     else
       user = User.new_with_auth(auth)
     end
+    user
   end
 
   def self.new_with_auth(auth)
