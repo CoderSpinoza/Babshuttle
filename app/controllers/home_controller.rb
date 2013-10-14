@@ -25,9 +25,18 @@ class HomeController < ApplicationController
 	def metrics
 		if current_user.admin?
 			# @users = User.all.order(:created_at)
-
+			@users_count = User.count
 			@users = User.select("DATE(created_at), COUNT(id)").order("DATE(created_at) ASC").group("DATE(created_at)")
 			@users_hash = @users.map { |user| { x: user.date.strftime("%s").to_i * 1000, y: user.count }}
+
+			@accumulated_users_list = []
+
+			accumulated_count = 0
+			@users_hash.each do |date|
+				accumulated_count += date[:y]
+				accumulated_users_hash = {x: date[:x], y: accumulated_count}
+				@accumulated_users_list << accumulated_users_hash
+			end
 		else
 			render "public/401.html"
 		end

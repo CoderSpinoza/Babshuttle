@@ -2,17 +2,19 @@
 	= render partial: "navbar"
 	.center
 		#new_user_graph{style: "height: 500px; width: 100%;"}
+		#accumulated_users_graph{style: "height: 500px; width:100%;"}
 		:javascript
 			$(document).ready(function() {
 				var chart = new CanvasJS.Chart("new_user_graph", {
 					theme: "theme2",
 					title: {
-						text: "New User Metrics"
+						text: "New Users"
 					},
 					axisX: {
 						title: "Date"
 					},
 					axisY: {
+						title: "Users",
 						includeZero: true
 					},
 					data: [
@@ -24,5 +26,26 @@
 					]		
 				});
 
+				var chart2 = new CanvasJS.Chart("accumulated_users_graph", {
+					theme: "theme1",
+					title: {
+						text: "Accumulated Users"
+					},
+					axisX: {
+						title: "Date"
+					},
+					axisY: {
+						title: "Users",
+						includeZero: true
+					},
+					data: [
+						{ 
+							type: "line",
+							xValueType: "dateTime",
+							dataPoints: #{@accumulated_users_list.to_json	}
+						}
+					]		
+				});
 				chart.render();
+				chart2.render();
 			});
