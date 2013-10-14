@@ -1,8 +1,28 @@
 #white_main
 	= render partial: "navbar"
 	.center
-		.h3
-			Users: #{@users.count}
-			%ol
-			- @users.each do |user|
-				%li= user.name
+		#new_user_graph{style: "height: 500px; width: 100%;"}
+		:javascript
+			$(document).ready(function() {
+				var chart = new CanvasJS.Chart("new_user_graph", {
+					theme: "theme2",
+					title: {
+						text: "New User Metrics"
+					},
+					axisX: {
+						title: "Date"
+					},
+					axisY: {
+						includeZero: true
+					},
+					data: [
+						{ 
+							type: "line",
+							xValueType: "dateTime",
+							dataPoints: #{@users_hash.to_json}
+						}
+					]		
+				});
+
+				chart.render();
+			});

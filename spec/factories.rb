@@ -4,10 +4,15 @@ FactoryGirl.define do
 	end
 
 	factory :user do
-		name Faker::Name.name
-		email Faker::Internet.email
+		name { Faker::Name.name }
+		email { Faker::Internet.email }
 		password "Babshuttle2013"
 		password_confirmation "Babshuttle2013"
+	end
+	factory :order do
+	end
+
+	factory :item do
 	end
 
   factory :address do
