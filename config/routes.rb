@@ -17,6 +17,8 @@ Babshuttle::Application.routes.draw do
   get '/contact' => "home#contact", as: "contact"
   get '/metrics' => "home#metrics", as: "metrics"
   get '/stats' => "home#stats", as: "stats"
+  get '/fan/wait' => "home#fan_wait", as: "fan_wait"
+  get '/fan' => "home#fan", as: "fan"
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

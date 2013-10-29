@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131004171149) do
+ActiveRecord::Schema.define(version: 20131016050759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20131004171149) do
     t.string   "zipcode"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "city"
+    t.string   "state"
   end
 
   add_index "addresses", ["street", "apt", "zipcode"], name: "index_addresses_on_street_and_apt_and_zipcode", using: :btree
@@ -43,6 +45,16 @@ ActiveRecord::Schema.define(version: 20131004171149) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "deliverysessions", force: true do |t|
+    t.string  "day"
+    t.integer "end",       limit: 2, default: 0
+    t.string  "location"
+    t.integer "start",     limit: 2, default: 0
+    t.integer "driver_id"
+  end
+
+  add_index "deliverysessions", ["driver_id"], name: "deliverysessions_driver_id_index", using: :btree
 
   create_table "in_app_purchase_products", force: true do |t|
     t.string   "product_identifier",                null: false
@@ -93,6 +105,7 @@ ActiveRecord::Schema.define(version: 20131004171149) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "popularity"
+    t.integer  "store_id"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -127,10 +140,17 @@ ActiveRecord::Schema.define(version: 20131004171149) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "items",        default: ""
+    t.text     "items",                         default: ""
     t.datetime "time"
     t.integer  "address_id"
     t.string   "phone_number"
+    t.string   "items_string"
+    t.integer  "end_hour",            limit: 2, default: 0
+    t.integer  "start_hour",          limit: 2, default: 0
+    t.integer  "delivery_session_id"
+    t.datetime "date"
+    t.integer  "end",                 limit: 2, default: 0
+    t.integer  "start",               limit: 2, default: 0
   end
 
   create_table "passbook_passes", force: true do |t|
@@ -186,13 +206,17 @@ ActiveRecord::Schema.define(version: 20131004171149) do
     t.integer "version", default: 0, null: false
   end
 
+  create_table "stores", force: true do |t|
+    t.string "name"
+  end
+
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",     null: false
-    t.string   "encrypted_password",     default: "",     null: false
+    t.string   "email",                            default: "",     null: false
+    t.string   "encrypted_password",               default: "",     null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                    default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -200,12 +224,21 @@ ActiveRecord::Schema.define(version: 20131004171149) do
     t.string   "authentication_token"
     t.string   "name"
     t.string   "address"
-    t.string   "role",                   default: "user"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "phone_number"
+    t.string   "role",                             default: "user"
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.integer  "end_hour",               limit: 2, default: 0
+    t.string   "location"
+    t.integer  "start_hour",             limit: 2, default: 0
+    t.string   "passwordConfirmation"
+    t.string   "phoneNumber"
+    t.integer  "orders_id"
     t.string   "provider"
     t.string   "uid"
+    t.string   "market"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

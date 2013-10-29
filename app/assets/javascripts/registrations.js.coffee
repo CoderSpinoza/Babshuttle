@@ -6,8 +6,12 @@ $(document).ready ->
 	$("form#new_user")
 		.bind 'ajax:beforeSend', () ->
 			$("#signup_submit").attr("disabled", "disabled")
-		.bind 'ajax:success', (evt, xhr, settings) -> 
-			window.location = "/orders/new"
+		.bind 'ajax:success', (evt, json, settings) -> 
+			market = json.market
+			if market == "chinese"
+				window.location = "/fan/wait"
+			else
+				window.location = "/orders/new"
 		.bind 'ajax:error', (evt, xhr, settings) ->
 			message = JSON.parse(xhr.responseText).message
 			error_message = message.join ", "

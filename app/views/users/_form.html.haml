@@ -13,6 +13,33 @@
       = f.password_field :password, class: "form-control", placeholder: "Password"
     .form-group
       = f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmation"
+    .form-group.pull-left
+      = f.select :market, options_for_select([["Korean Market", "korean"], ["Chinese Market", "chinese"]], @market), {}, { class: "selectpicker", data: { style: @style}} 
+
+    / - if @market == "chinese"
+    /   :javascript
+    /     $(document).ready(function() {
+    /       $("#user_market").selectpicker('setStyle', 'btn-danger');
+    /     });
+    / - else
+    /   :javascript
+    /     $(document).ready(function() {
+    /       $("#user_market").selectpicker('setStyle', 'btn-info');
+    /     });
+
+
+    :javascript
+      $(document).ready(function() {
+        $("#user_market").change(function() {
+          if ($("#user_market").val() == "korean") {
+            $(".dropdown-toggle").attr('class', 'btn btn-default dropdown-toggle btn-info');
+            console.log("korean");
+          } else {
+            $(".dropdown-toggle").attr('class', 'btn btn-default dropdown-toggle btn-danger');
+            console.log("chinese");
+          }
+        });
+      });
     .form-group
       #signup_alert
 

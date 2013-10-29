@@ -12,14 +12,15 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'cucumber-rails'
 end
 
 group :test do
 	gem 'guard-rspec'
 	gem 'capybara'
-	
 	gem 'rb-fsevent'
 	gem 'selenium-webdriver'
+  gem 'mocha'
 end
 
 group :staging, :production do

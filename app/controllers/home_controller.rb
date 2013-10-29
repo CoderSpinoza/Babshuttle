@@ -6,7 +6,14 @@ class HomeController < ApplicationController
 	end
 	def index
 		if @current_user
-			redirect_to new_order_path
+			if @current_user.korean?
+				redirect_to new_order_path
+			else
+				redirect_to "/fan/wait"
+			end
+		else
+			@market = "korean"
+			@style = "btn-info"
 		end
 	end
 
@@ -19,12 +26,17 @@ class HomeController < ApplicationController
 	def contact
 	end
 
+	def fan
+		@market = "chinese"
+		@style = "btn-danger"
+	end
+
 	def congrat
 	end
 
 	def metrics
 		if current_user.admin?
-			# @users = User.all.order(:created_at)
+			# building users metrics
 			@users_count = User.count
 			@users = User.select("DATE(created_at), COUNT(id)").order("DATE(created_at) ASC").group("DATE(created_at)")
 			@users_hash = @users.map { |user| { x: user.date.strftime("%s").to_i * 1000, y: user.count }}
@@ -36,6 +48,21 @@ class HomeController < ApplicationController
 				accumulated_count += date[:y]
 				accumulated_users_hash = {x: date[:x], y: accumulated_count}
 				@accumulated_users_list << accumulated_users_hash
+			end
+
+
+			# building orders metrics
+
+			@orders_count = Order.count
+			@orders = Order.select("DATE(created_at), COUNT(id)").order("DATE(created_at) ASC").group("DATE(created_at)")
+			@orders_hash = @orders.map { |order| { x: order.date.strftime("%s").to_i * 1000, y: order.count}}
+			@accumulated_orders_list = []
+
+			accumulated_count = 0
+			@orders_hash.each do |date|
+				accumulated_count += date[:y]
+				accumulated_orders_hash = {x: date[:x], y: accumulated_count}
+				@accumulated_orders_list << accumulated_orders_hash
 			end
 		else
 			render "public/401.html"

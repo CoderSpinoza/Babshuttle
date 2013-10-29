@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, length: { minimum: 6 }
+  validates :market, presence: true
   has_many :addresses
   has_many :orders
   has_many :delivery_sessions, foreign_key: "driver_id"
@@ -46,4 +47,12 @@ class User < ActiveRecord::Base
   def self.new_with_auth(auth)
     user = User.new(name: auth.extra.raw_info.name, provider: auth.provider, uid: auth.uid, email: auth.info.email)
   end 
+
+  def korean?
+    self.market == "korean"
+  end
+
+  def chinese?
+    self.market == "chinese"
+  end
 end

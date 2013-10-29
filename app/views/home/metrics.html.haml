@@ -3,6 +3,7 @@
 	.center
 		#new_user_graph{style: "height: 500px; width: 100%;"}
 		#accumulated_users_graph{style: "height: 500px; width:100%;"}
+		#accumulated_orders_graph{style: "height: 500px; width: 100%;"}
 		:javascript
 			$(document).ready(function() {
 				var chart = new CanvasJS.Chart("new_user_graph", {
@@ -46,6 +47,28 @@
 						}
 					]		
 				});
+
+				var chart3 = new CanvasJS.Chart("accumulated_orders_graph", {
+					theme: "theme1",
+					title: {
+						text: "Accumulated Orders"
+					},
+					axisX: {
+						title: "Date"
+					},
+					axisY: {
+						title: "Orders",
+						includeZero: true
+					},
+					data: [
+						{
+							type: "line",
+							xValueType: "dateTime",
+							dataPoints: #{@accumulated_orders_list.to_json}
+						}
+					]
+				})
 				chart.render();
 				chart2.render();
+				chart3.render();
 			});

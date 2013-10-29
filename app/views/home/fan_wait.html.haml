@@ -1,0 +1,14 @@
+#white_main
+	= render partial: "navbar"
+	.center{style: "text-align:center;"}
+		= image_tag "banner_alternative.png"
+		%h2{style: "color: #2ac583;"} Congratulations! You have successfully signed up for Bab Shuttle!
+
+		%h4{style: "width:800px; margin: 0 auto;color:#888888;"}
+			Chinese grocery delivery service is launching soon! In the meanwhile, please refer to our about page or contact us at 
+			= link_to "babshuttle@gmail.com"
+			if you have any questions. We will notify you when our service launches.
+		/ #countdown_div{style: "margin-top:100px;"}
+		/ 	#countdown
+		/ 	#note.green
+		= render partial: "footer"

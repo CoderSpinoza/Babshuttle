@@ -2,16 +2,19 @@
   #main
     = render partial: "navbar"
     #banner
-      = image_tag "banner_final2.png"
+      = image_tag "banner_final3.jpg"
 
     .center{style: "padding-bottom:20px;"}
       #signup_explanation{style: "padding-top: 30px; padding-bottom: 50px;"}
-        %p Sign up for free to get Korean groceries delievered!
         / %p
-        /   Sign up before September 2nd, 2013 for promotion prices.
+        /   Sign up before November 16th, 2013 for promotion prices.
         / #countdown_div
-        /   #countdown
+        /   #fan_countdown
         /   #note
+        %p
+          Babshuttle is now expanding to Chinese market! 
+        %p Sign up for free to get you notified when our Chinese grocery delivery service launches.
+        %br
         %button{href: "#signup_modal", class: "btn btn-primary", data: {toggle: "modal"}}
           Sign up
         = link_to "Sign up with facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary"

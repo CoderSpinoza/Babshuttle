@@ -6,6 +6,11 @@ class UserMailer < ActionMailer::Base
   	mail(to: @user.email, bcc: "hara0115@gmail.com", cc: "jakejooyoung@gmail.com", subject: "Welcome to Bab Shuttle!")
   end
 
+  def welcome_chinese(user)
+    @user = user
+    mail(to: @user.email, bcc: "hara0115@gmail.com", cc: "jakejooyoung@gmail.com", subject: "Welcome to Bab Shuttle!")
+  end
+
   def refresh(user)
     @user = user
     mail(to: @user.email, subject: "Bab shuttle is now open!")

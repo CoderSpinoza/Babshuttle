@@ -5,12 +5,13 @@ class RegistrationsController < Devise::RegistrationsController
     resource = User.new(user_params)
     resource.provider = session[:provider]
     resource.uid = session[:uid]
+    resource.name = resource.name.titleize
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
         # respond_with resource, :location => after_sign_up_path_for(resource)
-        render json: {message: "success"}
+        render json: {message: "success", market: resource.market }
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
         expire_session_data_after_sign_in!
@@ -24,6 +25,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     @user ||= User.new
+    @market = "korean"
   end
 
 	protected
@@ -33,6 +35,6 @@ class RegistrationsController < Devise::RegistrationsController
 
 	private
 		def user_params
-	    params.require(:user).permit(:name, :address, :email, :password, :password_confirmation, :updated_at, :created_at, :provider, :uid)
+	    params.require(:user).permit(:name, :address, :email, :password, :password_confirmation, :updated_at, :created_at, :provider, :uid, :market)
 	  end
 end

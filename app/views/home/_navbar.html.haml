@@ -6,7 +6,7 @@
       = link_to "Team", team_path, class: is_active(team_path)
       = link_to "Contact", contact_path, class: is_active(contact_path)
       
-      - if @current_user
+      - if @current_user and @current_user.korean?
         = link_to "History", orders_path
         = link_to "Order", new_order_path
       

@@ -12,9 +12,9 @@ $(function(){
 
   var note = $('#note')
 
-  var ts = new Date(2013, 8, 2);
+  var ts = new Date(2013, 10, 30);
 
-  $('#countdown').countdown({
+  $('#fan_countdown').countdown({
       timestamp	: ts,
       callback	: function(days, hours, minutes, seconds){
 

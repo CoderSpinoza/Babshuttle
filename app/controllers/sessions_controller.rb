@@ -5,7 +5,7 @@ class SessionsController < Devise::SessionsController
     resource = warden.authenticate!(:scope => resource_name, :recall => "sessions#failure")
     sign_in(resource_name, resource)
     resource.ensure_authentication_token
-    return render :json => { :success => true, :content => current_user.email, authentication_token: current_user.authentication_token }
+    return render :json => { :success => true, :content => current_user.email, authentication_token: current_user.authentication_token, market: resource.market }
   end
 
   def failure
