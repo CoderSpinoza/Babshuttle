@@ -28,6 +28,9 @@ class RegistrationsController < Devise::RegistrationsController
     @market = "korean"
   end
 
+  def show
+  end
+
 	protected
 		def after_sign_up_path_for(resource)
 			new_order_path

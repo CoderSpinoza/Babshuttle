@@ -45,6 +45,4 @@ Babshuttle::Application.configure do
   Paperclip::Attachment.default_options.merge!({
     :storage => :filesystem
   })
-
-
 end

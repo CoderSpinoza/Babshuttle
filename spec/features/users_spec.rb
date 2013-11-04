@@ -2,7 +2,7 @@ require 'spec_helper'
 describe "User", js: true do
 	it "clicks signup button" do
 		visit root_path
-		click_button "Sign Up for Free"
+		click_button "Sign up for Free"
 	end
 
 	it "clicks login button" do
